@@ -7,6 +7,6 @@ def homepage(request):
     profile = Profile.objects.all()
 
     context = {
-        'profile':profile
+        'profiles':profile
     }
     return render(request, 'index.html', context)

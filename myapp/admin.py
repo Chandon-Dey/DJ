@@ -7,6 +7,7 @@ class ProfileAdmin(admin.ModelAdmin):
         'name',
         'age',
         'address',
+        'created_at',
         'image'
     ]
 admin.site.register(Profile,ProfileAdmin)

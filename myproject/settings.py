@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp'
+    'storages',
+    'cloudinary_storage',
+    'cloudinary'
+    'myapp',
+    'Blog'
 ]
 
 MIDDLEWARE = [
@@ -59,7 +63,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [ BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,11 +127,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+STATICFILES_DIRS = [ BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT =  BASE_DIR / 'media'
 
+CLOUDINARY_STORAGE = {
+
+   'CLOUD_NAME':'dhl5clgsv',
+    'API_KEY':'523134565749935',
+    'API_SECRET':'TNSAtJxjNFAZrnhk52AEpzxCAgw'
+
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 

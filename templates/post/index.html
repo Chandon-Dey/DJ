@@ -36,6 +36,7 @@
     
     <!-- Custom styles for this template -->
     <link href="{% static '/css/carousel.css' %}" rel="stylesheet">
+    <link href="{% static '/css/style.css' %}" rel="stylesheet">
   </head>
   <body>
     
@@ -68,38 +69,40 @@
 </header>
 
 <main class="mt-5">
-  <div class="album py-5 bg-light">
-    <div class="container">
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-{% for profile in profiles %}
-        <div class="col">
-          <div class="card shadow-sm px-2">
-            <div class="profile_image">
-            <img class=" " src="{{ profile.image.url }}"style="width:100%;height:auto;" alt="">
-          </div>
-            <h2 class="card-title">{{ profile.name }}</h2>
-            <div class="card-body">
-
-              <p class="card-text">{{ profile.address }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">{{ profile.created_at | timesince }}</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-{% endfor %}
-      </div>
-    </div>
-  </div>
   
 
 
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  {% for post in posts%}
+
+  <div class=" container marketing">
+
+    <!-- START THE FEATURETTES -->
+
+ 
+
+    <div   class="row featurette d-flex align-items-center">
+      <div class="col-md-6">
+        <h2 class="featurette-heading">{{ post.title }}</h2>
+        <p class="lead">{{ post.short_description }}</p>
+        <p class="lead">{{ post.created_at |timesince }} ago</p>
+        <a href="{{post.get_absolute_url}}"><button class="btn btn-primary">view detals</button></a>
+      </div>
+      <div class="col-md-6">
+        <img class="rounded" src="{{ post.thumbnail.url }}" alt="">
+
+      </div>
+    </div>
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+  {% endfor %}
 
 
   <!-- FOOTER -->
